@@ -1,77 +1,57 @@
-/**
- * Core type definitions for the PowerPoint generator
- */
-
 export interface ServiceMetadata {
-  date: string; // YYYY-MM-DD
+  date: string;
   theme?: string;
 }
 
-export interface HymnSection {
+export interface HymnSlide {
+  text: string;
+  type: 'title' | 'verse' | 'chorus';
+}
+
+export interface Hymn {
   type: 'hymn';
-  hymnNumber: string; // Database hymn ID
-  chsNumber: number; // Church hymn number
+  hymnNumber: string;
+  chsNumber: number;
   title: string;
   verses: string[];
   chorus?: string | false;
-  slides: string[]; // Pre-formatted slide content
+  slides: HymnSlide[];
 }
 
 export interface BiblePassage {
   reference: string;
   text: string;
-  slides: string[]; // Pre-formatted slide content (max 7 lines each)
+  slides: BibleSlide[];
 }
 
-export interface BibleReadingSection {
+export interface BibleSlide {
+  text: string;
+  reference: string;
+}
+
+export interface BibleReading {
   type: 'bible_reading';
   title: string;
   passages: BiblePassage[];
 }
 
-export interface SectionTitleSlide {
+export interface SectionTitle {
   type: 'section_title';
   title: string;
 }
 
-export type ServiceSection = SectionTitleSlide | HymnSection | BibleReadingSection;
+export type ServiceSection = Hymn | BibleReading | SectionTitle;
 
-export interface ServiceJSON {
+export interface ServiceJson {
   metadata: ServiceMetadata;
   sections: ServiceSection[];
 }
 
-/**
- * Hymn database structure
- */
-export interface Hymn {
-  number: string;
+export interface ParsedHymn {
+  chsNumber: number;
   title: string;
-  titleWithHymnNumber: string;
-  chorus: string | false;
-  verses: string[];
-  sound?: string;
-  category: string;
 }
 
-export interface HymnDatabase {
-  hymns: Record<string, Hymn>;
-}
-
-/**
- * Bible API response
- */
-export interface BibleVerseResponse {
+export interface ParsedBibleReference {
   reference: string;
-  verses: Array<{
-    book_name: string;
-    chapter: number;
-    verse: number;
-    text: string;
-  }>;
-  text: string;
-  translation: {
-    name: string;
-    abbreviation: string;
-  };
 }

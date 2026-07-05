@@ -1,39 +1,26 @@
-/**
- * Simple logging utility
- */
-
-enum LogLevel {
-  DEBUG = 'DEBUG',
-  INFO = 'INFO',
-  WARN = 'WARN',
-  ERROR = 'ERROR',
-}
+type LogLevel = 'info' | 'warn' | 'error' | 'debug';
 
 class Logger {
-  private isDev = process.env.NODE_ENV !== 'production';
+  private level: LogLevel = 'info';
 
-  private log(level: LogLevel, message: string, data?: unknown) {
-    const timestamp = new Date().toISOString();
-    const prefix = `[${timestamp}] [${level}]`;
-    console.log(prefix, message, data || '');
+  setLevel(level: LogLevel): void {
+    this.level = level;
   }
 
-  debug(message: string, data?: unknown) {
-    if (this.isDev) {
-      this.log(LogLevel.DEBUG, message, data);
-    }
+  info(message: string, ...args: unknown[]): void {
+    console.log(`[INFO] ${message}`, ...args);
   }
 
-  info(message: string, data?: unknown) {
-    this.log(LogLevel.INFO, message, data);
+  warn(message: string, ...args: unknown[]): void {
+    console.warn(`[WARN] ${message}`, ...args);
   }
 
-  warn(message: string, data?: unknown) {
-    this.log(LogLevel.WARN, message, data);
+  error(message: string, ...args: unknown[]): void {
+    console.error(`[ERROR] ${message}`, ...args);
   }
 
-  error(message: string, data?: unknown) {
-    this.log(LogLevel.ERROR, message, data);
+  debug(message: string, ...args: unknown[]): void {
+    console.log(`[DEBUG] ${message}`, ...args);
   }
 }
 
