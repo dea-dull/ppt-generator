@@ -8,16 +8,17 @@ const SLIDE_HEIGHT = 7.5;
 export class PowerPointGenerator {
   private prs: PptxGenJS;
   private templatePath?: string;
+  private slideCount: number = 0;
 
   constructor(templatePath?: string) {
     this.prs = new PptxGenJS();
-    this.prs.defineLayout({ name: 'BLANK', master: 'BLANK' });
     this.templatePath = templatePath;
     this.setupPresentation();
   }
 
   private setupPresentation(): void {
-    this.prs.defineLayout({ name: 'BLANK', master: 'BLANK' });
+    // Define blank slide layout
+    this.prs.defineLayout({ name: 'BLANK' });
   }
 
   async generate(serviceJson: ServiceJson): Promise<void> {
@@ -33,7 +34,7 @@ export class PowerPointGenerator {
       }
     }
 
-    logger.info(`Generated ${this.prs.slides.length} slides`);
+    logger.info(`Generated ${this.slideCount} slides`);
   }
 
   private addHymnSlides(hymn: Hymn): void {
@@ -41,6 +42,7 @@ export class PowerPointGenerator {
 
     for (const slide of hymn.slides) {
       const pptSlide = this.prs.addSlide();
+      this.slideCount++;
       this.applyDefaultLayout(pptSlide);
 
       if (slide.type === 'title') {
@@ -85,6 +87,7 @@ export class PowerPointGenerator {
 
     // Add title slide
     const titleSlide = this.prs.addSlide();
+    this.slideCount++;
     this.applyDefaultLayout(titleSlide);
     titleSlide.addText(bibleReading.title, {
       x: 0.5,
@@ -101,6 +104,7 @@ export class PowerPointGenerator {
     for (const passage of bibleReading.passages) {
       for (const slide of passage.slides) {
         const pptSlide = this.prs.addSlide();
+        this.slideCount++;
         this.applyDefaultLayout(pptSlide);
 
         pptSlide.addText(slide.reference, {
@@ -134,6 +138,7 @@ export class PowerPointGenerator {
     logger.debug(`Adding section title slide: ${section.title}`);
 
     const slide = this.prs.addSlide();
+    this.slideCount++;
     this.applyDefaultLayout(slide);
 
     slide.addText(section.title, {
