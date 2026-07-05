@@ -24,7 +24,7 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^1.6.0",
-    "pptxgen": "^3.12.0"
+    "pptxgenjs": "^3.12.0"
   },
   "devDependencies": {
     "@types/jest": "^29.5.0",
