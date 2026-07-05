@@ -1,4 +1,4 @@
-import PptxGen from 'pptxgen';
+import PptxGen from 'pptxgenjs';
 import { logger } from '../utils/logger.js';
 import { ServiceJson, Hymn, BibleReading, SectionTitle } from '../types/index.js';
 

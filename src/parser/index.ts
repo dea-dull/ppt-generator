@@ -74,7 +74,7 @@ export async function parseServiceFile(filePath: string): Promise<ParseResult> {
         const sectionMatch = line.match(new RegExp(`\\b(${keyword}[^\n]*)`, 'i'));
         if (sectionMatch) {
           const title = sectionMatch[1].trim();
-          result.sections.push({ title });
+          result.sections.push({ type: 'section_title', title });
           logger.debug(`Found section: ${title}`);
           break;
         }
