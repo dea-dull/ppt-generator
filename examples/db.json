@@ -1,0 +1,34 @@
+{
+  "hymns": [
+    {
+      "number": "1",
+      "title": "All Creatures of Our God and King",
+      "verses": [
+        "All creatures of our God and King,\nLift up your voice and with us sing,\nAlleluia, Alleluia!\nThou burning sun with golden beam,\nThou silver moon with softer gleam,\nO praise Him, O praise Him,\nAlleluia, Alleluia, Alleluia!",
+        "Thou rushing wind that art so strong,\nYe clouds that sail in Heaven along,\nO praise Him, Alleluia!\nThou rising moon, thou shining stars,\nYe sounds that spring from worlds afar,\nO praise Him, O praise Him,\nAlleluia, Alleluia, Alleluia!"
+      ],
+      "chorus": false,
+      "category": "Praise"
+    },
+    {
+      "number": "14",
+      "title": "O Come, All Ye Faithful",
+      "verses": [
+        "O come, all ye faithful,\nJoyful and triumphant,\nO come ye, O come ye to Bethlehem;\nCome and behold Him,\nBorn the King of Angels;\nO come, let us adore Him,\nO come, let us adore Him,\nO come, let us adore Him, Christ the Lord!",
+        "Sing, choirs of angels,\nSing in exultation,\nSing with us, ye faithful all around God's throne;\nHow the heights reecho\nWith your glad hosannas;\nO come, let us adore Him,\nO come, let us adore Him,\nO come, let us adore Him, Christ the Lord!"
+      ],
+      "chorus": false,
+      "category": "Advent"
+    },
+    {
+      "number": "202",
+      "title": "Jesus Loves Me",
+      "verses": [
+        "Jesus loves me, this I know,\nFor the Bible tells me so;\nLittle ones to Him belong;\nThey are weak, but He is strong.",
+        "Jesus loves me, He who died,\nHeaven's gate to open wide;\nHe will wash away my sin,\nLet His little child come in."
+      ],
+      "chorus": "Yes, Jesus loves me,\nYes, Jesus loves me,\nYes, Jesus loves me,\nThe Bible tells me so.",
+      "category": "Children"
+    }
+  ]
+}
