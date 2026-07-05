@@ -74,7 +74,7 @@ export class HymnService {
     }
 
     // Chorus slide (if present)
-    if (hymn.chorus && hymn.chorus !== false) {
+    if (typeof hymn.chorus === 'string' && hymn.chorus.length > 0) {
       slides.push({
         text: hymn.chorus,
         type: 'chorus',
