@@ -1,20 +1,16 @@
-import PptxGen from 'pptxgenjs';
+import PptxGenJS from 'pptxgenjs';
 import { logger } from '../utils/logger.js';
 import { ServiceJson, Hymn, BibleReading, SectionTitle } from '../types/index.js';
 
 const SLIDE_WIDTH = 10;
 const SLIDE_HEIGHT = 7.5;
 
-interface PptxGenWithTemplates extends PptxGen.PresentationProps {
-  defineLayout?: (options: any) => void;
-}
-
 export class PowerPointGenerator {
-  private prs: PptxGen.Presentation;
+  private prs: PptxGenJS;
   private templatePath?: string;
 
   constructor(templatePath?: string) {
-    this.prs = new PptxGen();
+    this.prs = new PptxGenJS();
     this.prs.defineLayout({ name: 'BLANK', master: 'BLANK' });
     this.templatePath = templatePath;
     this.setupPresentation();
@@ -55,7 +51,7 @@ export class PowerPointGenerator {
           h: 1,
           fontSize: 44,
           bold: true,
-          align: 'center',
+          align: 'center' as const,
           color: '000000',
         });
         pptSlide.addText(slide.text, {
@@ -65,7 +61,7 @@ export class PowerPointGenerator {
           h: 1.5,
           fontSize: 46,
           bold: true,
-          align: 'center',
+          align: 'center' as const,
           color: '000000',
         });
       } else {
@@ -75,8 +71,8 @@ export class PowerPointGenerator {
           w: 9,
           h: 5,
           fontSize: 40,
-          align: 'center',
-          valign: 'middle',
+          align: 'center' as const,
+          valign: 'middle' as const,
           color: '000000',
           wrap: true,
         });
@@ -97,7 +93,7 @@ export class PowerPointGenerator {
       h: 1.5,
       fontSize: 48,
       bold: true,
-      align: 'center',
+      align: 'center' as const,
       color: '000000',
     });
 
@@ -114,7 +110,7 @@ export class PowerPointGenerator {
           h: 0.5,
           fontSize: 14,
           italic: true,
-          align: 'right',
+          align: 'right' as const,
           color: '666666',
         });
 
@@ -124,8 +120,8 @@ export class PowerPointGenerator {
           w: 9,
           h: 5.8,
           fontSize: 36,
-          align: 'left',
-          valign: 'top',
+          align: 'left' as const,
+          valign: 'top' as const,
           color: '000000',
           wrap: true,
           lineSpacing: 28,
@@ -147,12 +143,12 @@ export class PowerPointGenerator {
       h: 1.5,
       fontSize: 48,
       bold: true,
-      align: 'center',
+      align: 'center' as const,
       color: '000000',
     });
   }
 
-  private applyDefaultLayout(slide: PptxGen.Slide): void {
+  private applyDefaultLayout(slide: any): void {
     // Add background
     slide.background = { fill: 'FFFFFF' };
   }
