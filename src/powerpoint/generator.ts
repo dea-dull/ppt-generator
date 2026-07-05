@@ -2,9 +2,6 @@ import PptxGenJS from 'pptxgenjs';
 import { logger } from '../utils/logger.js';
 import { ServiceJson, Hymn, BibleReading, SectionTitle } from '../types/index.js';
 
-const SLIDE_WIDTH = 10;
-const SLIDE_HEIGHT = 7.5;
-
 export class PowerPointGenerator {
   private prs: PptxGenJS;
   private templatePath?: string;
@@ -17,8 +14,8 @@ export class PowerPointGenerator {
   }
 
   private setupPresentation(): void {
-    // Define blank slide layout
-    this.prs.defineLayout({ name: 'BLANK' });
+    // Set default slide dimensions (standard 16:9)
+    this.prs.defineLayout({ name: 'BLANK', width: 10, height: 7.5 });
   }
 
   async generate(serviceJson: ServiceJson): Promise<void> {
